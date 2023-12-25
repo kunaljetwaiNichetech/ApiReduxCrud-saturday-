@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export default function Form() {
-    const history =useNavigate()
-    const dispatch = useDispatch();
+  const history = useNavigate();
+  const dispatch = useDispatch();
   const [formdata, setFormdata] = useState({
     email: "",
     first_name: "",
@@ -19,12 +19,12 @@ export default function Form() {
   const handelFormsubmit = (e) => {
     e.preventDefault();
     console.log(formdata);
-    dispatch(delhdata());
-    history("/")
+    dispatch(delhdata(formdata));
+    history("/display");
   };
   return (
     <div>
-      <h1>this is form components</h1>{" "}
+      <h1>this is form components</h1>
       <div>
         <div>
           Add

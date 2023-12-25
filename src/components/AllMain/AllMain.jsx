@@ -1,13 +1,19 @@
-import React from 'react'
-import { useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { ftchdata } from "../apicalling/Callingappp";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Disp from "../Display/Disp";
 
 export default function AllMain() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [isrendered, setisrendered] = useState(false);
+  useEffect(() => {
+    if (isrendered == true) {
+      dispatch(ftchdata);
+    }
+    dispatch(ftchdata());
+  }, [dispatch]);
 
-    const [isrendered, setisrendered] = useState(false);
   return (
     <div>
       <h1>hii this is mainn</h1>
@@ -21,6 +27,7 @@ export default function AllMain() {
         click this to show component
       </button>
       {isrendered && <Disp />}
+      {/* <Disp /> */}
     </div>
   );
 }

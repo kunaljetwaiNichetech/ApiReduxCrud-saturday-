@@ -8,6 +8,8 @@ const store =configureStore({
     }
 })
 
+const inital =store.getState()
+console.log("initalstore",inital)
 export { store}
 export * from '../apicalling/Callingappp'
 export * from '../apicalling/delete'
