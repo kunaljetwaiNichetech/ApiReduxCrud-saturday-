@@ -1,30 +1,36 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // import { ListSlice } from "../Sclice/ListSclice";
 import { Link, useNavigate } from "react-router-dom";
 import { Deletedata } from "../apicalling/Adding";
-import { ftchdata } from "../apicalling/Callingappp";
+import { editData } from "../apicalling/Edit";
+
 export default function Disp() {
   const dispatch = useDispatch();
   const history = useNavigate();
   const showingadta = useSelector((state) => {
-    return state.Show.data.items;
+    return state.Show.data;
   });
+
   console.log("this is showingdata", showingadta);
+  // useEffect(() => {
+  //   console.log("rerender");
+  //   dispatch(ftchdata());
+  // }, [dispatch]);
   const handeldelete = (e) => {
     dispatch(Deletedata(e));
-    ftchdata();
-    history("/");
+    history("/display");
+    console.log("this is eeeeee", e);
   };
-  console.log("this is showing data", showingadta);
-  // if (showingadta.isLoading) {
-  //   return (
-  //     <div>
-  //       <h1>Loading.......</h1>
-  //     </div>
-  //   );
-  // }
+
+  if (showingadta.isLoading) {
+    return (
+      <div>
+        <h1>Loading.......</h1>
+      </div>
+    );
+  }
   // if (showingadta.iserror) {
   //   return (
   //     <div>
@@ -32,7 +38,7 @@ export default function Disp() {
   //     </div>
   //   );
   // }
-  const rendering = showingadta.map((item, i) => {
+  const rendering = showingadta.flat().map((item, i) => {
     return (
       <div>
         <div>
@@ -53,7 +59,8 @@ export default function Disp() {
                 <td>{item.lastname}</td>
                 <td>{item.email}</td>
                 <td>
-                  <button>Edit</button>&nbsp;
+                  <button onClick={() => dispatch(editData(item))}>Edit</button>
+                  &nbsp;
                   <button onClick={() => handeldelete(item)}>Delete</button>
                 </td>
               </tr>

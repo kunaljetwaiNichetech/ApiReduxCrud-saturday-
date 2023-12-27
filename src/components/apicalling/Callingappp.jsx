@@ -8,7 +8,7 @@ const ftchdata = createAsyncThunk("fetchingdata", async () => {
         "Bearer 4SUIx3DCqQZIEQdFbwU72xZJmB78cfb8R0OQ0a7XfTKIdUDGYw",
     },
   });
-  // console.log(response.js());
+  // console.log("fetchapi response", response.items.json());
   return response.json();
 });
 

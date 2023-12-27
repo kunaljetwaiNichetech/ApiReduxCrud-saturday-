@@ -1,6 +1,7 @@
-import React, { useState } from "react";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { ftchdata } from "./Callingappp";
 
 const delhdata = createAsyncThunk("adddata", async (props) => {
   let webApiUrl = "https://crudapi.co.uk/api/v1/kunal";
@@ -10,6 +11,7 @@ const delhdata = createAsyncThunk("adddata", async (props) => {
   const response = await axios.post(
     webApiUrl,
     //...data
+
     [
       {
         name: props.first_name,
@@ -37,7 +39,15 @@ const delhdata = createAsyncThunk("adddata", async (props) => {
     // }
   );
   // console.log(props)
-  return response.json();
+  // const statusOfDetelete = response.status;
+  console.log(response.status);
+  const demo2 = response.status;
+  if (demo2 === 201) {
+    console.log("this is rendering from post 201");
+    useDispatch(ftchdata);
+  }
+
+  return response.data;
 });
 
 // export default function AdddData() {
