@@ -20,6 +20,8 @@ const Deletedata = createAsyncThunk("deletingdata", async (props) => {
     console.log("exicuted");
   }
   console.log("this is status of post", response.status);
-  return response.data;
+
+    
+    return response.data;
 });
 export { Deletedata };

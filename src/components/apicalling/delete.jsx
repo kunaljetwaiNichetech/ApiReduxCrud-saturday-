@@ -41,11 +41,6 @@ const delhdata = createAsyncThunk("adddata", async (props) => {
   // console.log(props)
   // const statusOfDetelete = response.status;
   console.log(response.status);
-  const demo2 = response.status;
-  if (demo2 === 201) {
-    console.log("this is rendering from post 201");
-    useDispatch(ftchdata);
-  }
 
   return response.data;
 });

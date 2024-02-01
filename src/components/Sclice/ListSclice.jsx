@@ -3,6 +3,7 @@ import { ftchdata } from "../apicalling/Callingappp";
 import { delhdata } from "../apicalling/delete";
 import { Deletedata } from "../apicalling/Adding";
 import { editData } from "../apicalling/Edit";
+import { Loader } from "../Loader/LOaderr";
 
 const ListSlice = createSlice({
   name: "List",
@@ -14,7 +15,9 @@ const ListSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(ftchdata.pending, (state, action) => {
-      state.isLoading = true;
+    
+        state.isLoading = true;
+    
     });
     builder.addCase(ftchdata.fulfilled, (state, action) => {
       state.isLoading = false;

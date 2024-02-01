@@ -8,6 +8,7 @@ import AdddData from './components/apicalling/delete';
 import { Deletedata } from './components/apicalling/Adding';
 import Disp from './components/Display/Disp';
 import { useEffect } from 'react';
+import { Loader } from './components/Loader/LOaderr';
 
 
 function App() {
@@ -34,10 +35,13 @@ function App() {
         <Route path='/form' element={<Form/>}/>
         <Route path='/Add' element={<Form/>}/>
         <Route path='/display' element={<Disp/>}/>
+        <Route path='/da' element={<Loader/>}/>
+
 
       </Routes>
      </Router>
       {/* <AdddData/> */}
+  
       
      {/* <Disp/> */}
      
